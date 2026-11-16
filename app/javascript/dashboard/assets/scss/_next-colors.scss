@@ -29,18 +29,19 @@
     --iris-11: 87 83 198;
     --iris-12: 39 41 98;
 
-    --blue-1: 255 252 253;  // Era ruby-1
-    --blue-2: 255 247 248;  // Era ruby-2
-    --blue-3: 254 234 237;
-    --blue-4: 255 220 225;
-    --blue-5: 255 206 214;
-    --blue-6: 248 191 200;
-    --blue-7: 239 172 184;
-    --blue-8: 229 146 163;
-    --blue-9: 229 70 102;   
-    --blue-10: 220 59 93;   
-    --blue-11: 202 36 77;
-    --blue-12: 100 23 43;
+    // Hablia (HAB-934): escala azul centrada en el azul de marca #0055ff.
+    --blue-1: 251 252 255;
+    --blue-2: 245 248 255;
+    --blue-3: 234 241 255;
+    --blue-4: 220 231 255;
+    --blue-5: 204 220 255;
+    --blue-6: 185 206 255;
+    --blue-7: 159 188 255;
+    --blue-8: 122 161 255;
+    --blue-9: 0 85 255;
+    --blue-10: 0 74 230;
+    --blue-11: 0 68 214;
+    --blue-12: 0 33 102;
 
     --ruby-1: 255 252 253;
     --ruby-2: 255 247 248;
@@ -107,12 +108,12 @@
     --violet-11: 101 85 183;
     --violet-12: 47 38 95;
 
-    --background-color: 253 253 253;
+    --background-color: 247 247 247;
     --surface-1: 254 254 254;
     --surface-2: 255 255 255;
     --surface-active: 255 255 255;
     --background-input-box: 0, 0, 0, 0.03;
-    --text-blue: 202 36 77;
+    --text-blue: 1 22 44;
     --text-purple: 2 4 49;
     --text-amber: 37 24 1;
     --border-container: 236 236 236;
@@ -123,8 +124,8 @@
     --solid-2: 255 255 255;
     --solid-3: 255 255 255;
     --solid-active: 255 255 255;
-    --solid-amber: 252 232 193;
-    --solid-blue: 255 220 225;
+    --solid-amber: 255 228 181;
+    --solid-blue: 220 231 255;
     --solid-blue-2: 251 253 255;
     --solid-iris: 230 231 255;
     --solid-purple: 230 231 255;
@@ -143,7 +144,7 @@
     --alpha-3: 255, 255, 255, 0.96;
     --black-alpha-1: 0, 0, 0, 0.12;
     --black-alpha-2: 0, 0, 0, 0.04;
-    --border-blue: 229, 70, 102, 0.5
+    --border-blue: 0, 85, 255, 0.5;
     --white-alpha: 255, 255, 255, 0.8;
 
     // Voice call widget - light mode
@@ -181,18 +182,19 @@
     --iris-11: 158 177 255;
     --iris-12: 224 223 254;
 
-    --blue-1: 25 17 19;
-    --blue-2: 30 21 23;
-    --blue-3: 58 20 30;
-    --blue-4: 78 19 37;
-    --blue-5: 94 26 46;
-    --blue-6: 111 37 57;
-    --blue-7: 136 52 71;
-    --blue-8: 179 68 90;
-    --blue-9: 229 70 102;
-    --blue-10: 236 90 114;
-    --blue-11: 255 148 157;
-    --blue-12: 254 210 225;
+    // Hablia (HAB-934): escala azul oscura; 11 = #6596ff para texto AA.
+    --blue-1: 10 15 28;
+    --blue-2: 14 21 38;
+    --blue-3: 13 33 77;
+    --blue-4: 10 40 105;
+    --blue-5: 16 51 128;
+    --blue-6: 27 64 150;
+    --blue-7: 39 79 176;
+    --blue-8: 47 96 210;
+    --blue-9: 0 85 255;
+    --blue-10: 31 107 255;
+    --blue-11: 101 150 255;
+    --blue-12: 205 220 255;
 
     --ruby-1: 25 17 19;
     --ruby-2: 30 21 23;
@@ -274,8 +276,11 @@
     --solid-2: 29 30 36;
     --solid-3: 44 45 54;
     --solid-active: 53 57 66;
-    --solid-amber: 42 37 30;
-    --solid-blue: 58 20 30;  // Valor de ruby-3 (fondo oscuro rojizo)
+    --solid-amber: 56 50 41;
+    --solid-blue: 13 40 105;
+    // Hablia (HAB-934): primer plano de marca en oscuro (texto, bordes, rings).
+    // #0055ff sobre los fondos oscuros da 2,4-3,3:1; #6596ff da >= 4,8:1.
+    --brand-fg: 101 150 255;
     --solid-blue-2: 26 29 35;
     --solid-iris: 38 42 101;
     --solid-purple: 51 51 107;
@@ -288,15 +293,14 @@
     --button-hover-color: 0, 0, 0, 0.15;
     --label-background: 36 38 45;
     --label-border: 255, 255, 255, 0.03;
-    --text-blue: 255 148 157; // Override Hablia (ruby-11)
 
     --alpha-1: 35, 36, 42, 0.8;
     --alpha-2: 147, 153, 176, 0.12;
     --alpha-3: 33, 34, 38, 0.95;
     --black-alpha-1: 0, 0, 0, 0.3;
     --black-alpha-2: 0, 0, 0, 0.2;
-    --border-blue: 229, 70, 102, 0.5; // Override Hablia (ruby-9 alpha)
-    --border-container: 236, 236, 236, 0;
+    --border-blue: 0, 85, 255, 0.5;
+    --border-container: 255, 255, 255, 0;
     --white-alpha: 255, 255, 255, 0.1;
 
     // Voice call widget - dark mode

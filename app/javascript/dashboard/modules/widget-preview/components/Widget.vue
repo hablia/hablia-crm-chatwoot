@@ -286,7 +286,7 @@ const handleToggleWidget = () => {
   --alpha-3: 255, 255, 255, 0.96;
   --black-alpha-1: 0, 0, 0, 0.12;
   --black-alpha-2: 0, 0, 0, 0.04;
-  --border-blue: 39, 129, 246, 0.5;
+  --border-blue: 0, 85, 255, 0.5;
   --white-alpha: 255, 255, 255, 0.8;
 }
 
@@ -322,7 +322,7 @@ const handleToggleWidget = () => {
   --alpha-3: 36, 38, 45, 0.9;
   --black-alpha-1: 0, 0, 0, 0.3;
   --black-alpha-2: 0, 0, 0, 0.2;
-  --border-blue: 39, 129, 246, 0.5;
+  --border-blue: 0, 85, 255, 0.5;
   --border-container: 236, 236, 236, 0;
   --white-alpha: 255, 255, 255, 0.1;
 }

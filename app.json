@@ -1,9 +1,9 @@
 {
-  "name": "Hablia Care",
-  "description": "Hablia Care - Plataforma de atención al cliente",
+  "name": "Hablia CRM",
+  "description": "Hablia CRM - Plataforma de atención al cliente",
   "website": "https://care.hablia.ai/",
   "repository": "https://github.com/tu-usuario/chatwoot-hablia",
-  "logo": "https://firebasestorage.googleapis.com/v0/b/hablia-dev.firebasestorage.app/o/LogoAppHabliaCareAndroid.png?alt=media&token=a0efca67-c27c-4419-90d4-9a82224445cb",
+  "logo": "https://crm.hablia.ai/brand-assets/logo_thumbnail.svg",
   "keywords": [
     "live chat",
     "customer support",
