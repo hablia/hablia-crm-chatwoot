@@ -19,6 +19,10 @@ const defaultSansFonts = [
   'sans-serif !important',
 ];
 
+const brandForeground = {
+  n: { brand: 'rgb(var(--brand-fg, 0 85 255) / <alpha-value>)' },
+};
+
 const tailwindConfig = {
   darkMode: 'class',
   content: [
@@ -39,6 +43,16 @@ const tailwindConfig = {
   ],
   theme: {
     extend: {
+      // Hablia (HAB-934): el azul de marca #0055ff sobre los fondos oscuros no
+      // llega a AA. El texto, los outlines y los rings de `n-brand` toman
+      // `--brand-fg`, que solo se define en modo oscuro (#6596ff). Los fondos y
+      // los bordes siguen en #0055ff: el checkbox y el radio marcados combinan
+      // `bg-n-brand` con `border-n-brand` y tienen que ser del mismo color. Con
+      // texto blanco, #0055ff da 5,6:1. El fallback cubre el widget, que no
+      // carga `_next-colors.scss`.
+      textColor: brandForeground,
+      outlineColor: brandForeground,
+      ringColor: brandForeground,
       fontFamily: {
         sans: defaultSansFonts,
         inter: ['Inter', ...defaultSansFonts],
@@ -215,19 +229,6 @@ const tailwindConfig = {
       'modal-backdrop-dark': 'rgba(0, 0, 0, 0.6)',
       current: 'currentColor',
       ...colors,
-      woot: {
-        25: '#FFFAFC',  // Casi blanco
-        50: '#FFF1F5',  // Fondo muy suave
-        100: '#FFE4EC',
-        200: '#FFC9D9',
-        300: '#FF9EB8',
-        400: '#FF5C8D',
-        500: '#D30046', // <--- TU COLOR PRINCIPAL
-        600: '#B0003A', // Hover (más oscuro para interacción)
-        700: '#8F002F',
-        800: '#700025',
-        900: '#52001B', // Textos muy oscuros
-      },
       body: slateDark.slate7,
     },
     keyframes: {

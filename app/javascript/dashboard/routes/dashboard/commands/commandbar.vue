@@ -269,7 +269,7 @@ onMounted(() => {
 
 <style lang="scss">
 ninja-keys {
-  --ninja-accent-color: rgba(39, 129, 246, 1);
+  --ninja-accent-color: rgba(0, 85, 255, 1);
   --ninja-font-family: 'Inter';
   z-index: 9999;
 }
