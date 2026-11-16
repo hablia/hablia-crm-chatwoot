@@ -44,13 +44,13 @@ const tailwindConfig = {
   theme: {
     extend: {
       // Hablia (HAB-934): el azul de marca #0055ff sobre los fondos oscuros no
-      // llega a AA. Lo que va encima de una superficie (texto, bordes, outlines
-      // y rings de `n-brand`) toma `--brand-fg`, que solo se define en modo
-      // oscuro (#6596ff). Los fondos (`bg-n-brand`) siguen en #0055ff, que con
-      // texto blanco da 5,6:1. El fallback cubre el widget, que no carga
-      // `_next-colors.scss`.
+      // llega a AA. El texto, los outlines y los rings de `n-brand` toman
+      // `--brand-fg`, que solo se define en modo oscuro (#6596ff). Los fondos y
+      // los bordes siguen en #0055ff: el checkbox y el radio marcados combinan
+      // `bg-n-brand` con `border-n-brand` y tienen que ser del mismo color. Con
+      // texto blanco, #0055ff da 5,6:1. El fallback cubre el widget, que no
+      // carga `_next-colors.scss`.
       textColor: brandForeground,
-      borderColor: brandForeground,
       outlineColor: brandForeground,
       ringColor: brandForeground,
       fontFamily: {

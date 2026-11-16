@@ -109,7 +109,7 @@ const handleDialogConfirm = async () => {
     slug: state.slug,
     custom_domain: state.domain,
     blob_id: state.avatarBlobId || null,
-    color: '#0055FF', // The default color is set to Chatwoot brand color
+    color: '#0055FF', // Azul de marca de Hablia (HAB-934)
   };
   await createPortal(portal);
 };
