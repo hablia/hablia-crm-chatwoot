@@ -123,6 +123,9 @@ jobs:
           rm -rf enterprise
           rm -rf spec/enterprise
 
+      - name: Install libvips for Active Storage
+        run: sudo apt-get update && sudo apt-get install -y libvips42t64
+
       - name: Create database
         run: bundle exec rake db:create
 
