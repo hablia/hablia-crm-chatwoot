@@ -313,6 +313,26 @@ describe Whatsapp::IncomingMessageService do
         expect(whatsapp_channel.inbox.conversations.count).not_to eq(0)
         expect(Contact.all.first.name).to eq('Sojan Jose')
         expect(whatsapp_channel.inbox.messages.first.content).to eq('First Button')
+        expect(whatsapp_channel.inbox.messages.first.content_attributes).not_to have_key('whatsapp_interactive_reply_id')
+      end
+
+      %w[button_reply list_reply].each do |kind|
+        it "preserves the tournament #{kind} id in the incoming message webhook" do
+          reply_id = 'hablia:tournament:exit'
+          params = {
+            'contacts' => [{ 'profile' => { 'name' => 'Sojan Jose' }, 'wa_id' => '2423423243' }],
+            'messages' => [{ 'from' => '2423423243', 'id' => "wamid.#{kind}", 'type' => 'interactive',
+                             'timestamp' => '1633034394',
+                             'interactive' => { 'type' => kind, kind => { 'id' => reply_id, 'title' => 'Volver al inicio' } } }]
+          }.with_indifferent_access
+
+          described_class.new(inbox: whatsapp_channel.inbox, params: params).perform
+
+          message = whatsapp_channel.inbox.messages.find_by!(source_id: "wamid.#{kind}")
+          expect(message).to be_incoming
+          expect(message.content).to eq('Volver al inicio')
+          expect(message.webhook_data[:content_attributes]).to include('whatsapp_interactive_reply_id' => reply_id)
+        end
       end
     end
 
