@@ -54,12 +54,8 @@ to display a collection of resources in an HTML table.
 
   <tbody>
     <% resources.each do |resource| %>
-      <tr class="js-table-row"
-          tabindex="0"
-          <% if existing_action? collection_presenter.resource_name, :show %>
-            <%= %(role=link data-url=#{polymorphic_path([namespace, resource.becomes(User)])}) %>
-          <% end %>
-          >
+      <% show_path = polymorphic_path([namespace, resource.becomes(User)]) if existing_action?(collection_presenter.resource_name, :show) && authorized_action?(resource, :show) %>
+      <%= tag.tr class: "js-table-row", tabindex: ("0" if show_path), role: ("link" if show_path), data: { row_url: show_path } do %>
         <% collection_presenter.attributes_for(resource).each do |attribute| %>
           <td class="cell-data cell-data--<%= attribute.html_class %>">
             <% if authorized_action? resource,  :show -%>
@@ -89,7 +85,7 @@ to display a collection of resources in an HTML table.
             data: { confirm: t("administrate.actions.confirm") }
           ) if authorized_action? resource, :destroy %></td>
         <% end %>
-      </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
