@@ -175,13 +175,11 @@ class Whatsapp::IncomingMessageBaseService
   end
 
   def message_content_attributes(message)
-    content_attrs = outgoing_echo ? { external_echo: true } : {}
+    content_attrs = outgoing_echo ? { external_echo: true } : tournament_interactive_reply_attributes(message)
     content_attrs[:in_reply_to] = @in_reply_to_message_id if @in_reply_to_message_id.present?
     content_attrs[:in_reply_to_external_id] = @in_reply_to_external_id if @in_reply_to_external_id.present?
     referral_content_attrs = referral_attributes(message)
     content_attrs[:referral] = referral_content_attrs if referral_content_attrs.present?
-    tournament_reply_id = tournament_interactive_reply_id(message)
-    content_attrs[:whatsapp_interactive_reply_id] = tournament_reply_id if tournament_reply_id
 
     flow_response = message.dig(:interactive, :nfm_reply)
     if flow_response.present?
@@ -193,16 +191,6 @@ class Whatsapp::IncomingMessageBaseService
     end
 
     content_attrs
-  end
-
-  def tournament_interactive_reply_id(message)
-    return if outgoing_echo || message[:type] != 'interactive'
-
-    kind = message.dig(:interactive, :type)
-    return unless %w[button_reply list_reply].include?(kind)
-
-    reply_id = message.dig(:interactive, kind, :id)
-    reply_id if reply_id.is_a?(String) && reply_id.match?(/\Ahablia:tournament:[A-Za-z0-9:_-]{1,160}\z/)
   end
 
   def attach_contact(contact)

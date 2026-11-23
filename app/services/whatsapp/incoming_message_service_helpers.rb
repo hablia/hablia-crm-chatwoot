@@ -103,4 +103,18 @@ module Whatsapp::IncomingMessageServiceHelpers
 
     Whatsapp::MessageDedupLock.new(messages_data.first[:id]).acquire!
   end
+
+  private
+
+  def tournament_interactive_reply_attributes(message)
+    return {} if message[:type] != 'interactive'
+
+    kind = message.dig(:interactive, :type)
+    return {} unless %w[button_reply list_reply].include?(kind)
+
+    reply_id = message.dig(:interactive, kind, :id)
+    return {} unless reply_id.is_a?(String) && reply_id.match?(/\Ahablia:tournament:[A-Za-z0-9:_-]{1,160}\z/)
+
+    { whatsapp_interactive_reply_id: reply_id }
+  end
 end
