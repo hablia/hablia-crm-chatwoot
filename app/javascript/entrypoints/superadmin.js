@@ -1,5 +1,33 @@
 import '../dashboard/assets/scss/super_admin/index.scss';
 
+document.addEventListener('click', event => {
+  const row = event.target.closest('tr[data-row-url]');
+  if (
+    !row ||
+    event.defaultPrevented ||
+    event.metaKey ||
+    event.ctrlKey ||
+    event.shiftKey ||
+    event.altKey
+  )
+    return;
+  if (
+    event.target.closest('a, button, input, select, textarea, label') ||
+    window.getSelection()?.toString()
+  )
+    return;
+
+  window.location.assign(row.dataset.rowUrl);
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Enter' && event.key !== ' ') return;
+  if (!event.target.matches('tr[data-row-url]')) return;
+
+  event.preventDefault();
+  window.location.assign(event.target.dataset.rowUrl);
+});
+
 const initializeAccountSuspensionForm = () => {
   const form = document.querySelector('[data-account-suspension-form]');
   if (!form) return;
