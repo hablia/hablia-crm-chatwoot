@@ -227,7 +227,7 @@ end
 
 group :development do
   gem 'annotaterb'
-  gem 'bullet'
+  gem 'bullet', '~> 8.1.3'
   gem 'letter_opener'
   gem 'scss_lint', require: false
   gem 'web-console', '>= 4.2.1'
